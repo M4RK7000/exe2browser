@@ -5,5 +5,5 @@
 
 ### Checklist for v0.21
 
-[ ] Finish up argparse shtuff
-[ ] Core features
+- [ ] Finish up argparse shtuff
+- [ ] Core features
