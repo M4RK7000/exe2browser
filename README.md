@@ -6,4 +6,8 @@
 ### Checklist for v0.21
 
 - [ ] Finish up argparse shtuff
-- [ ] Core features
+- [ ] Code core features
+- [ ] Documentation
+
+## Documentation
+Coming soon!
