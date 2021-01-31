@@ -75,7 +75,13 @@ f.close() # aight file script written
 
 os.mkdir("%s_exe" % exeName) #
 os.chdir("%s_exe" % exeName)
-commands = os.system("py -m pyinstaller --onefile %s.py" % (exeName))
+
+commands = os.system("python -m pyinstaller --onefile %s.py" % (exeName))
+
+if commands == 1:
+    commands = os.system("py -m pyinstaller --onefile %s.py" % (exeName))
+else:
+    pass # Thanks PlayboiNazzy for testing my man
 
 os.chdir("tst")
 os.system("move %s.exe .." % (exeName))
