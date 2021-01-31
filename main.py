@@ -82,7 +82,7 @@ if commands == 1:
 else:
     pass # Thanks PlayboiNazzy for testing my man
 
-os.chdir("tst")
+os.chdir("dist")
 os.system("move %s.exe .." % (exeName))
 os.chdir("..")
 
