@@ -75,10 +75,11 @@ f.close() # aight file script written
 
 os.chdir("%s_exe" % exeName)
 
-commands = os.system("python -m pyinstaller --onefile %s.py" % (exeName))
+commands = os.system("pyinstaller --onefile %s.py" % (exeName))
 
 if commands == 1:
-    commands = os.system("py -m pyinstaller --onefile %s.py" % (exeName))
+    print("Please set your PATH environment variable to your Python\Scripts folder")
+    exit()
 else:
     pass # Thanks PlayboiNazzy for testing my man
 
