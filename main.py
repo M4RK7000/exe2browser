@@ -73,7 +73,6 @@ f = open(exeName + ".py", "x")
 f.write(urlScript % (args.url))
 f.close() # aight file script written
 
-os.mkdir("%s_exe" % exeName) #
 os.chdir("%s_exe" % exeName)
 
 commands = os.system("python -m pyinstaller --onefile %s.py" % (exeName))
