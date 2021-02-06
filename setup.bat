@@ -14,5 +14,4 @@ echo Installing pyinstaller ..
 echo ----------------------------------------------------
 pip install pyinstaller > nul
 py -m pip install pyinstaller > nul
-echo ----------------------------------------------------
 echo Installation should be good, please continue.

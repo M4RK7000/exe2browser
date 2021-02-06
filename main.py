@@ -59,24 +59,23 @@ else:
     exit()
 
 # This is the part where the real stuff begins ..
-# file&dir preparation
-
-os.mkdir(exeName + "_exe") # just to make sure a system-reserved name like "con" is corrected
+# File script writing:
 
 f = open(exeName + ".py", "x")
 f.write(urlScript % args.url)
-f.close() # aight file script written
+f.close()
 
-os.chdir("%s_exe" % exeName)
+# start up pyinstaller:
+commands = os.system("pyinstaller --upx-dir / --onefile %s.py" % exeName)
 
-commands = os.system("pyinstaller --upx-dir upx --onefile %s.py" % exeName)
-
+# check for errors:
 if commands != 1:
     pass
 else:
-    print(f"{sys.argv[0]}: error: pyinstaller not found :/ (is the python scripts folder in your path?)") # no cleanup for now
+    print(f"{sys.argv[0]}: error: pyinstaller/upx not found :/ (is the python scripts folder in your path & is upx in directory?)") # no cleanup for now
     exit()
 
+# move dist/_.exe file
 os.chdir("dist")
 try:
     os.system("move %s.exe .." % exeName)
@@ -86,10 +85,9 @@ except:
 
 os.chdir("..")
 
-os.system("rmdir /S /Q build") # deletion/cleanup
+# deletion/cleanup
+os.system("rmdir /S /Q build")
 os.system("rmdir /S /Q dist")
 os.system("rmdir /S /Q __pycache__")
 os.system("del %s.spec" % exeName)
 os.system("del %s.py" % exeName)
-
-os.system("move %s.exe .." % exeName)
