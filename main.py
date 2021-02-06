@@ -3,11 +3,6 @@ import random
 import os
 import sys
 
-###############################################################################
-# If you're reading this, I need more .exe names for the fakeNames list!      #
-# Check out the issues page and make a new issue with label "add random name" #
-###############################################################################
-
 fakeNames = ["MinecraftCrackInstall",
              "FreeVBucksGen",
              "NotARickroll",
@@ -80,7 +75,7 @@ commands = os.system("pyinstaller --onefile %s.py" % (exeName))
 if commands == 1:
     pass
 else:
-    pass # Thanks PlayboiNazzy for testing my man
+    pass
 
 os.chdir("dist")
 os.system("move %s.exe .." % (exeName))
