@@ -25,7 +25,7 @@ os.system('start %s')
 
 # Argparse code
 
-parser = argparse.ArgumentParser(description="Disguise rickrolls, memes or other URLs to open in executable files. https://github.com/M4RK7000/exe2browser")
+parser = argparse.ArgumentParser(description="Disguise rickrolls, memes or other URLs to open in executable files. https://github.com/m42km/exe2browser")
 
 parser.add_argument("url",
                     type=str,
@@ -72,7 +72,7 @@ commands = os.system("pyinstaller --upx-dir / --onefile %s.py" % exeName)
 if commands != 1:
     pass
 else:
-    print(f"{sys.argv[0]}: error: pyinstaller/upx not found :/ (is the python scripts folder in your path & is upx in directory?)") # no cleanup for now
+    print(f"{sys.argv[0]}: error: pyinstaller not found :/") # no cleanup for now
     exit()
 
 # move dist/_.exe file
@@ -80,7 +80,7 @@ os.chdir("dist")
 try:
     os.system("move %s.exe .." % exeName)
 except:
-    print("%s: error: .exe not found (is upx in the upx/ folder?)" % sys.argv[0])
+    print("%s: error: .exe not found (something went very wrong ..)" % sys.argv[0])
     exit()
 
 os.chdir("..")
