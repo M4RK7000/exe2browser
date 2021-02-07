@@ -27,4 +27,5 @@ exe2browser.py [-h] {url} [output name]
 ## Disclaimer
 
 I) I do **not** own PyInstaller or any other projects used to make this program.
+
 II) I am not responsible for any damage caused by this program.
