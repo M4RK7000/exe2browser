@@ -14,13 +14,17 @@
 ## Documentation
 
 ###Setup
+
 Run the `setup.bat` file, or just install `pyinstaller` using `pip` if that causes trouble.
 
 Then, `cd` your way to the repo directory and you'll be set!
+
 ###Usage
+
 ```
 exe2browser.py [-h] {url} [output name]
 ```
 ## Disclaimer
+
 I) I do **not** own PyInstaller or any other projects used to make this program.
 II) I am not responsible for any damage caused by this program.
