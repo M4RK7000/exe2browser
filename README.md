@@ -13,15 +13,29 @@
 
 ## Documentation
 
-###Setup
+### Setup
 
 Run the `setup.bat` file, or just install `pyinstaller` using `pip` if that causes trouble.
 
 Then, `cd` your way to the repo directory and you'll be set!
 
-###Usage
+### Usage
 ```
-exe2browser.py [-h] {url} [output name]
+positional arguments:
+  url                   URL(s) to open, please seperate each URL by a space.
+  output                Output directory/executable file name.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --icon ICON, -i ICON  Icon for the .exe file (.ico or executables with proper icons are acceptable)
+  --upx UPX, -u UPX     UPX arguments/compression preset to use. (e.g. -u max, -u "-8 --brute". 
+                        check presets below!)
+
+UPX presets:
+    umax = "-b --ultra-brute --all-methods --all-filters"
+    max = "-9 --ultra-brute"
+    high = "-9 --brute"
+    mod = "-5"
 ```
 ## Disclaimer
 
